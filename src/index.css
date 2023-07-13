@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #ff55a3;
+}
+
+h1 {
+  text-align: center;
+}
+
+.todo-container {
+  margin-top: 20px;
+}
+
+.todo-input {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.todo-input input[type="text"] {
+  flex: 1;
+  padding: 5px;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.todo-item .actions {
+  display: flex;
+}
+
+.todo-item .actions button {
+  margin-left: 5px;
+}
