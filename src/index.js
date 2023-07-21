@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios'
 
-// axios.defaults.baseURL('https://crud-backend-c6ae58cf7bc6.herokuapp.com')
+// axios.defaults.baseURL('http://127.0.0.1:5000')
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
