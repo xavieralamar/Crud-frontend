@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-axios.defaults.headers.post['Content-Type'] ='application/json';
-axios.defaults.withCredentials = true
+
+// axios.defaults.headers.post['Content-Type'] ='application/json';
+// axios.defaults.withCredentials = true
+
+const config = {
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS'
+  }
+}
+
 axios.get('https://crud-backend-c6ae58cf7bc6.herokuapp.com/')
 .then(res => console.log(res))
 .catch(err => console.log(err))
@@ -27,7 +36,7 @@ function App() {
     if (!taskInput) return;
 
     try {
-      const response = await axios.post('https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks', { task: taskInput });
+      const response = await axios.post('https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks', { task: taskInput }, config);
       if (response.status === 201) {
         setTaskInput('');
         fetchTasks();
@@ -39,7 +48,7 @@ function App() {
 
   const updateTask = async (taskId, updatedTask) => {
     try {
-      await axios.put(`https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks/${taskId}`, { task: updatedTask });
+      await axios.put(`https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks/${taskId}`, { task: updatedTask }, config);
       fetchTasks();
     } catch (error) {
       console.error('Error updating task:', error);
@@ -48,7 +57,7 @@ function App() {
 
   const deleteTask = async (taskId) => {
     try {
-      await axios.delete(`https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks/${taskId}`);
+      await axios.delete(`https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks/${taskId}`, config);
       fetchTasks();
     } catch (error) {
       console.error('Error deleting task:', error);
