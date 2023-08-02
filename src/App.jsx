@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 axios.defaults.headers.post['Content-Type'] ='application/json';
-// axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true
 axios.get('https://crud-backend-c6ae58cf7bc6.herokuapp.com/')
 .then(res => console.log(res))
 .catch(err => console.log(err))
