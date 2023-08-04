@@ -58,7 +58,7 @@ function App() {
   const deleteTask = async (taskId) => {
     try {
       await axios.delete(`https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks/${taskId}`, config);
-      fetchTasks();
+      setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
     } catch (error) {
       console.error('Error deleting task:', error);
     }
