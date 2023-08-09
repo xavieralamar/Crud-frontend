@@ -47,8 +47,9 @@ function App() {
   };
 
   const updateTask = async (taskId, updatedTask) => {
+    console.log(taskId)
     try {
-      await axios.put(`https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks/${taskId}`, { task: updatedTask }, config);
+      await axios.put(`https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks/${taskId.$oid}`, { task: updatedTask }, config);
       fetchTasks();
     } catch (error) {
       console.error('Error updating task:', error);
@@ -57,7 +58,7 @@ function App() {
 
   const deleteTask = async (taskId) => {
     try {
-      await axios.delete(`https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks/${taskId}`, config);
+      await axios.delete(`https://crud-backend-c6ae58cf7bc6.herokuapp.com/api/tasks/${taskId.$oid}`, config);
       setTasks((prevTasks) => prevTasks.filter((task) => task._id !== taskId));
     } catch (error) {
       console.error('Error deleting task:', error);
@@ -72,6 +73,10 @@ function App() {
     e.preventDefault();
     addTask();
   };
+
+  function CloseInput(){
+    document.getElementById('edit-box').style.display = 'none';
+  }
 
   return (
     <div className="App">
